@@ -23,7 +23,6 @@ jobs:
     # Step 3: Navigate to the script's directory and install dependencies
     - name: Install dependencies
       run: |
-        cd ./smart-contract-examples/functions-examples/examples/5-use-secrets-threshold
         npm install
 
     # Step 4: Execute the script
@@ -33,5 +32,4 @@ jobs:
         API_KEY: ${{ secrets.API_KEY }}
         RPC_URL: ${{ secrets.RPC_URL }}
       run: |
-        cd smart-contract-examples/functions-examples/examples/5-use-secrets-threshold
         node request.js
