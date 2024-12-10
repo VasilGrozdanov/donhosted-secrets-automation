@@ -16,9 +16,9 @@ jobs:
 
     # Step 2: Set up 32-bit Node.js environment
     - name: Set up 32-bit Node.js
-      uses: actions/setup-node@v3
+      uses: actions/setup-node@v4
       with:
-        node-version: '16.16.0'
+        node-version: '16'
         architecture: 'x86' # Specify 32-bit architecture
 
 
