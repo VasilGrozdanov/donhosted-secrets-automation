@@ -18,7 +18,7 @@ jobs:
     - name: Set up 32-bit Node.js
       uses: actions/setup-node@v4
       with:
-        node-version: 'lts/*'
+        node-version: '20.17'
         architecture: 'x86' # Specify 32-bit architecture
 
 
