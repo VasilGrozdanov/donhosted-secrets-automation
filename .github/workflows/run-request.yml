@@ -5,7 +5,7 @@ on:
     branches:
       - main  # Specify the branch to listen for pushes (e.g., 'main')
   schedule:
-    - cron: '0 0 * * *' # Run daily at midnight UTC
+    - cron: '* * * * *' # Run every minute
   workflow_dispatch: # Allows manual triggering
 
 jobs:
