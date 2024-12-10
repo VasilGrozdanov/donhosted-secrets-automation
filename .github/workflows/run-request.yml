@@ -1,11 +1,9 @@
 name: Execute request.js daily
 
 on:
-  push:  # Triggers on a push event to the repository
-    branches:
-      - main  # Specify the branch to listen for pushes (e.g., 'main')
+  push:
   schedule:
-    - cron: '* * * * *' # Run every minute
+    - cron: '*/5 * * * *' # Run every 5 minutes
   workflow_dispatch: # Allows manual triggering
 
 jobs:
