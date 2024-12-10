@@ -3,7 +3,7 @@ name: Execute request.js daily
 on:
   push:
   schedule:
-    - cron: '*/6 * * * *' # Run every 6 minutes
+    - cron: '0 0 * * *' # Run every day
   workflow_dispatch: # Allows manual triggering
 
 jobs:
