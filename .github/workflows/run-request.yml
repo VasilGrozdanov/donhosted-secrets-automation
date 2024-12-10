@@ -1,0 +1,37 @@
+name: Execute request.js daily
+
+on:
+  schedule:
+    - cron: '0 0 * * *' # Run daily at midnight UTC
+  workflow_dispatch: # Allows manual triggering
+
+jobs:
+  run-request-script:
+    runs-on: ubuntu-latest
+
+    steps:
+    # Step 1: Check out the repository
+    - name: Checkout repository
+      uses: actions/checkout@v3
+
+    # Step 2: Set up Node.js environment
+    - name: Set up Node.js
+      uses: actions/setup-node@v3
+      with:
+        node-version: '18' # Specify Node.js version
+
+    # Step 3: Navigate to the script's directory and install dependencies
+    - name: Install dependencies
+      run: |
+        cd smart-contract-examples/functions-examples/examples/5-use-secrets-threshold
+        npm install
+
+    # Step 4: Execute the script
+    - name: Run request.js
+      env:
+        PRIVATE_KEY: ${{ secrets.PRIVATE_KEY }}
+        API_KEY: ${{ secrets.API_KEY }}
+        RPC_URL: ${{ secrets.RPC_URL }}
+      run: |
+        cd smart-contract-examples/functions-examples/examples/5-use-secrets-threshold
+        node request.js
