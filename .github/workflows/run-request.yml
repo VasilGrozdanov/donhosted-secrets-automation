@@ -22,14 +22,18 @@ jobs:
         node-version: '20.17'
         architecture: 'x86' # Specify 32-bit architecture
 
+    # Step 3: Clean up last dependencies
+    - name: Clean up dependencies
+      run: |
+        Remove-Item -Recurse -Force node_modules, package-lock.json
+      shell: pwsh
 
-    # Step 3: Navigate to the script's directory and install dependencies
+    # Step 4: Navigate to the script's directory and install dependencies
     - name: Install dependencies
       run: |
-        rm -rf node_modules package-lock.json
         npm install
 
-    # Step 4: Execute the script
+    # Step 5: Execute the script
     - name: Run request.js
       env:
         PRIVATE_KEY: ${{ secrets.PRIVATE_KEY }}
