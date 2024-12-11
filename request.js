@@ -41,20 +41,20 @@ const makeRequestSepolia = async () => {
 
   const wallet = new ethers.Wallet(privateKey);
   const signer = wallet.connect(provider); // create ethers signer for 
-  console.log("Test call");
+  // console.log("Test call");
 
-  const abi = [ // Minimal ABI for testing
-    "function owner() public view returns (address)"
-  ];
+  // const abi = [ // Minimal ABI for testing
+  //   "function owner() public view returns (address)"
+  // ];
 
-  const contract = new ethers.Contract(routerAddress, abi, signer);
+  // const contract = new ethers.Contract(routerAddress, abi, signer);
 
-  try {
-    const owner = await contract.owner();
-    console.log("owner:", owner);
-  } catch (err) {
-    console.error("Error interacting with contract:", err);
-  }
+  // try {
+  //   const owner = await contract.owner();
+  //   console.log("owner:", owner);
+  // } catch (err) {
+  //   console.error("Error interacting with contract:", err);
+  // }
   console.log("\nMake request...");
 
   // First encrypt secrets and upload the encrypted secrets to the DON
