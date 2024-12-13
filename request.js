@@ -12,6 +12,7 @@ const makeRequestSepolia = async () => {
   // ];
   // hardcoded for Ethereum Sepolia
   const routerAddress = "0xb83E47C2bC239B3bf370bc41e1459A34b41238D0";
+  const rewardResolverAddress = "0x62c10d09f538b0a8f0fa403FAf14a1fF23f1e5e4";
   const donId = "fun-ethereum-sepolia-1";
   const gatewayUrls = [
     "https://01.functions-gateway.testnet.chain.link/",
@@ -93,6 +94,19 @@ const makeRequestSepolia = async () => {
   });
 
   console.log(`\nMake a note of the encryptedSecretsReference: ${encryptedSecretsReference} `);
+  console.log("Test call");
+
+  const abi = [ // Minimal ABI for setting the secret refference
+    "function setDonHostedSecret(bytes calldata donHostedSecret) external"
+  ];
+
+  const contract = new ethers.Contract(rewardResolverAddress, abi, signer);
+
+  try {
+    await contract.setDonHostedSecret(encryptedSecretsReference);
+  } catch (err) {
+    console.error("Error interacting with contract:", err);
+  }
 };
 
 makeRequestSepolia().catch((e) => {
