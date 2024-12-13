@@ -94,10 +94,10 @@ const makeRequestSepolia = async () => {
   });
 
   console.log(`\nMake a note of the encryptedSecretsReference: ${encryptedSecretsReference} `);
-  console.log("Test call");
+  console.log("Update encrypted secret to contract");
 
   const abi = [ // Minimal ABI for setting the secret refference
-    "function setDonHostedSecret(bytes calldata donHostedSecret) external"
+    "function setDonHostedSecret(bytes calldata donHostedSecret) external",
   ];
 
   const contract = new ethers.Contract(rewardResolverAddress, abi, signer);
